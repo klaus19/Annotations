@@ -1,9 +1,9 @@
-
-
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class CreateAnnotations {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
 
        @SuppressWarnings("unused")
         Cat mycat = new Cat("Stella");
@@ -20,5 +20,10 @@ public class CreateAnnotations {
       }else{
           System.out.println("This thing is not very important");
       }
+
+      for(Method method :mycat.getClass().getDeclaredMethods()){
+          method.invoke(mycat);
+      }
     }
+
 }
